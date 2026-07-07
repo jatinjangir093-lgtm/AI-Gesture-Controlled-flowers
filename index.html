@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Flower — Grow Love with Your Hands</title>
+    <meta name="description" content="An AI-powered interactive experience where a glowing magical flower grows from your hand gestures. A digital gift of love.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Import Map for Three.js ES Modules -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-flower">🌸</div>
+            <h1 class="loading-title">Growing Love</h1>
+            <p class="loading-subtitle">Preparing your magical experience...</p>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loading-bar"></div>
+            </div>
+            <p class="loading-status" id="loading-status">Initializing...</p>
+        </div>
+    </div>
+
+    <!-- Webcam Video (hidden, used as source) -->
+    <video id="webcam-video" autoplay playsinline muted></video>
+
+    <!-- Three.js Canvas -->
+    <canvas id="scene-canvas"></canvas>
+
+    <!-- UI Overlay -->
+    <div id="ui-overlay">
+        <!-- Glassmorphism Stats Panel (Top Left) -->
+        <div class="stats-panel" id="stats-panel">
+            <div class="stat-item">
+                <span class="stat-icon">🌱</span>
+                <span class="stat-label">Growth</span>
+                <span class="stat-value" id="stat-growth">0%</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">🌸</span>
+                <span class="stat-label">Bloom</span>
+                <span class="stat-value" id="stat-bloom">0%</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-icon">💖</span>
+                <span class="stat-label">Energy</span>
+                <span class="stat-value" id="stat-energy">0%</span>
+            </div>
+            <div class="stat-item tracking-status">
+                <span class="stat-icon" id="tracking-icon">📷</span>
+                <span class="stat-label">Tracking</span>
+                <span class="stat-value" id="stat-tracking">Active</span>
+            </div>
+        </div>
+
+        <!-- Top Center Title -->
+        <div class="title-container">
+            <h1 class="main-title">Growing Love</h1>
+        </div>
+
+        <!-- Tracking Lost Warning Overlay -->
+        <div class="tracking-warning hidden" id="tracking-warning">
+            <p>Move your hands into the camera</p>
+        </div>
+
+        <!-- Bottom Center Instructions -->
+        <div class="instructions-container" id="instructions">
+            <div class="instruction-box" id="label-right">
+                <span class="instruction-icon">✋</span>
+                <p><strong>Right Hand</strong> <br>Spread thumb & index to grow</p>
+            </div>
+            <div class="instruction-box disabled" id="label-left">
+                <span class="instruction-icon">🤚</span>
+                <p><strong>Left Hand</strong> <br>Grow fully first, then bloom</p>
+            </div>
+        </div>
+
+        <!-- Bloom Unlocked Badge -->
+        <div class="bloom-unlocked-badge" id="bloom-unlocked">
+            <span class="bloom-unlocked-icon">🌸</span>
+            <span class="bloom-unlocked-text">Bloom Unlocked!</span>
+        </div>
+
+        <!-- FPS Counter (subtle) -->
+        <div class="fps-counter" id="fps-counter">60 FPS</div>
+    </div>
+
+    <!-- Main Application Script -->
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
